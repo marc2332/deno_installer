@@ -1,0 +1,13 @@
+[package]
+name = "deno_installer"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "deno_installer"
+crate-type = ["cdylib"]
+
+[dependencies]
+tauri-bundler = "1.0.0-rc.3"
+deno_bindgen = "0.5.0"
+serde = "1.0.136"

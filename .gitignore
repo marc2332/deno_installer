@@ -1,0 +1,4 @@
+target
+*.exe
+dist
+WixTools
