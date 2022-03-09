@@ -1,4 +1,4 @@
-import { Installer } from "../mod.ts";
+import { Installer } from "../../mod.ts";
 
 const installer = new Installer({
     out_path: `${Deno.cwd()}/dist`,

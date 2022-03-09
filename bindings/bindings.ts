@@ -18,8 +18,12 @@ function readPointer(v: any): Uint8Array {
 }
 const opts = {
   name: "deno_installer",
-  url: (new URL("../target/debug", import.meta.url)).toString(),
-  policy: CachePolicy.NONE,
+  url:
+    (new URL(
+      "https://github.com/marc2332/deno_installer/releases/download/0.1.0/deno_installer.dll",
+      import.meta.url,
+    )).toString(),
+  policy: undefined,
 }
 const _lib = await prepare(opts, {
   create_installer: {
