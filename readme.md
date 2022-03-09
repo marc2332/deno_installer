@@ -1,6 +1,6 @@
 ## 📦 Port of [tauri-bundler](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler)
 
-You can now easily create installers for your Deno apps!
+You can now easily create installers for your Deno apps, thanks to the amazing work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) 💪
 
 IMPORTANT note: the code is very **meh**
 
