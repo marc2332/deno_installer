@@ -20,7 +20,7 @@ Before making the installer make sure you have your project as:
 
 Create a file `build.ts`, paste and modify as you wish:
 
-```
+```ts
 import { Installer } from "https://deno.land/x/installer/mod.ts";
 
 const installer = new Installer({
@@ -48,7 +48,7 @@ await installer.createInstaller();
 ```
 
 Run:
-```
+```shell
 deno run -A --unstable build.ts
 ```
 
@@ -62,12 +62,12 @@ Requisites:
 - deno
 
 Build the plugin:
-```
+```shell
 deno_bindgen
 ```
 
 Create a installer from the demo app:
-```
+```shell
 cd examples/oak
 deno compile app.ts
 deno run -A --unstable build.ts
