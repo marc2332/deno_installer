@@ -2,7 +2,7 @@ name: Release libs
 
 on:
   workflow_dispatch:
-    branches: [ main ]
+    branches: [ main, feature/cd ]
   push:
     branches: [ main ]
 
