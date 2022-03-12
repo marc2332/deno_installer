@@ -11,7 +11,6 @@ That beind said, feel free to contribute, it only supports **Windows** at the mo
 Before making the installer make sure you have your project as:
 
 ```
-.
 +-- MyApp.exe
 +-- icons
 |   +-- icon.ico (Windows)
