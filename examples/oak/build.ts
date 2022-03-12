@@ -2,7 +2,7 @@ import { Installer } from "../../mod.ts";
 
 const installer = new Installer({
     out_path: `${Deno.cwd()}/dist`,
-    src_path: `${Deno.cwd()}/app.exe`,
+    src_path: `${Deno.cwd()}/app${Deno.build.os === "windows" ? ".exe" : ""}`,
     package: {
         product_name: "MyApp",
         version: "1.0.0",

@@ -2,16 +2,16 @@
 
 You can now easily create installers for your Deno apps, thanks to the amazing work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) 💪
 
-IMPORTANT note: the code is very **meh**
+IMPORTANT note: the code is still very **meh**
 
-That beind said, feel free to contribute, it only supports **Windows** at the moment (that's the only one I have tested with). If you are a MacOS or Linux user I would appreciate some feedback! See [Contributing](#Contributing) if that's the case!
+That beind said, feel free to contribute. If you have any feature idea see [Contributing](#Contributing) :)
 
 ## Demo
 
 Before making the installer make sure you have your project as:
 
 ```
-+-- MyApp.exe
++-- MyAppExecutable (.exe if in Windows)
 +-- icons
 |   +-- icon.ico (Windows)
 |   +-- icon.png (MacOS & Linux)
@@ -24,7 +24,7 @@ import { Installer } from "https://deno.land/x/installer/mod.ts";
 
 const installer = new Installer({
     out_path: `${Deno.cwd()}/dist`,
-    src_path: `${Deno.cwd()}/MyApp.exe`,
+    src_path: `${Deno.cwd()}/MyAppExecutable${Deno.build.os === "windows" ? ".exe" : ""}`,
     package: {
         product_name: "MyApp",
         version: "1.0.0",

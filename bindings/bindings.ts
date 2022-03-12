@@ -20,7 +20,7 @@ const opts = {
   name: "deno_installer",
   url:
     (new URL(
-      "https://github.com/marc2332/deno_installer/releases/download/0.1.0/deno_installer.dll",
+      "https://github.com/marc2332/deno_installer/releases/download/0.1.0/",
       import.meta.url,
     )).toString(),
   policy: undefined,
@@ -32,14 +32,6 @@ const _lib = await prepare(opts, {
     nonblocking: false,
   },
 })
-export type BundleSettingsInstaller = {
-  identifier: string | undefined | null
-  icon: Array<string> | undefined | null
-  resources: Array<string> | undefined | null
-  copyright: string | undefined | null
-  short_description: string | undefined | null
-  long_description: string | undefined | null
-}
 export type PackageSettingsInstaller = {
   product_name: string
   version: string
@@ -53,6 +45,14 @@ export type InstallerSettings = {
   out_path: string
   bundle: BundleSettingsInstaller
   package: PackageSettingsInstaller
+}
+export type BundleSettingsInstaller = {
+  identifier: string | undefined | null
+  icon: Array<string> | undefined | null
+  resources: Array<string> | undefined | null
+  copyright: string | undefined | null
+  short_description: string | undefined | null
+  long_description: string | undefined | null
 }
 export function create_installer(a0: InstallerSettings) {
   const a0_buf = encode(JSON.stringify(a0))
