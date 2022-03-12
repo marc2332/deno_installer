@@ -3,8 +3,10 @@ name: Release libs
 on:
   workflow_dispatch:
     branches: [ main, feature/cd ]
-  push:
-    branches: [ main ]
+    inputs:
+      version:
+        description: 'Version'     
+        required: true
 
 jobs:
   build:
@@ -28,21 +30,21 @@ jobs:
         args: --release
 
     - name: Release MacOS lib
-      if: runner.os != 'Windows'
+      if: runner.os == 'MacOS'
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/libdeno_installer.dylib
-        tag: ${{ github.sha }}
+        tag: ${{ github.events.inputs.version }}
         overwrite: true
 
     - name: Release Linux lib
-      if: runner.os != 'Windows'
+      if: runner.os != 'Linux'
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/libdeno_installer.so
-        tag: ${{ github.sha }}
+        tag: ${{ github.events.inputs.version }}
         overwrite: true
 
     - name: Release Windows lib
@@ -51,5 +53,5 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/deno_installer.dll
-        tag: ${{ github.sha }}
+        tag: ${{ github.events.inputs.version }}
         overwrite: true
