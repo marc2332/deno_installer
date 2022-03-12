@@ -27,13 +27,22 @@ jobs:
         command: build
         args: --release
 
-    - name: Release MacOS And Linux lib
+    - name: Release MacOS lib
+      if: runner.os != 'Windows'
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: target/release/libdeno_installer.dylib
+        tag: ${{ github.sha }}
+        overwrite: true
+
+    - name: Release Linux lib
       if: runner.os != 'Windows'
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/libdeno_installer.so
-        tag: ${{ github.ref }}
+        tag: ${{ github.sha }}
         overwrite: true
 
     - name: Release Windows lib
@@ -42,5 +51,5 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/deno_installer.dll
-        tag: ${{ github.ref }}
+        tag: ${{ github.sha }}
         overwrite: true
