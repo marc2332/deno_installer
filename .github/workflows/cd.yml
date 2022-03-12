@@ -35,16 +35,16 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/libdeno_installer.dylib
-        tag: ${{ github.events.inputs.version }}
+        tag: ${{ github.event.inputs.version }}
         overwrite: true
 
     - name: Release Linux lib
-      if: runner.os != 'Linux'
+      if: runner.os == 'Linux'
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/libdeno_installer.so
-        tag: ${{ github.events.inputs.version }}
+        tag: ${{ github.event.inputs.version }}
         overwrite: true
 
     - name: Release Windows lib
@@ -53,5 +53,5 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: target/release/deno_installer.dll
-        tag: ${{ github.events.inputs.version }}
+        tag: ${{ github.event.inputs.version }}
         overwrite: true
