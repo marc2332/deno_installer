@@ -20,7 +20,7 @@ const opts = {
   name: "deno_installer",
   url:
     (new URL(
-      "https://github.com/marc2332/deno_installer/releases/download/0.1.0/",
+      "https://github.com/marc2332/deno_installer/releases/download/0.1.2/",
       import.meta.url,
     )).toString(),
   policy: undefined,
