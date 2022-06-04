@@ -29,6 +29,28 @@ jobs:
         command: build
         args: --release
 
+    - if: runner.os == 'MacOS'
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        target: aarch64-apple-darwin
+
+    - if: runner.os == 'MacOS'
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --release --target=aarch64-apple-darwin
+
+    - name: Create universal lib for macOS
+      if: runner.os == 'MacOS'
+      run: |
+        mkdir -p target/tmp
+        mv target/release/libdeno_installer.dylib target/tmp/libdeno_installer.dylib
+
+        lipo -create -output target/release/libdeno_installer.dylib \
+          target/tmp/libdeno_installer.dylib \
+          target/aarch64-apple-darwin/release/libdeno_installer.dylib
+
     - name: Release MacOS lib
       if: runner.os == 'MacOS'
       uses: svenstaro/upload-release-action@v2
