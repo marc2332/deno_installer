@@ -1,0 +1,32 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+    branches: [ feat/unit-tests ]
+
+jobs:
+  build:
+    name: Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+
+    - uses: denoland/setup-deno@v1
+      with:
+        deno-version: vx.x.x
+
+    - name: deno_bindgen
+      run: |
+        deno install -Afq -n deno_bindgen https://deno.land/x/deno_bindgen/cli.ts
+        deno_bindgen
+
+    - name: tests
+      run: deno test -A --unstable
