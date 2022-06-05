@@ -54,6 +54,19 @@ fn adapt_bundle(custom_bundle: BundleSettingsInstaller) -> BundleSettings {
     bundle.short_description = custom_bundle.short_description;
     bundle.long_description = custom_bundle.long_description;
 
+    #[cfg(windows)]
+    if let Some(icon) = &bundle.icon {
+        if icon.len() > 0 {
+            use std::path::PathBuf;
+            bundle.windows.icon_path = PathBuf::from(
+                icon.iter()
+                    .find(|i| i.ends_with(".ico"))
+                    .cloned()
+                    .expect("the bundle config must have a `.ico` icon"),
+            );
+        }
+    }
+
     bundle
 }
 
@@ -68,7 +81,6 @@ fn create_installer(installer_settings: InstallerSettings) {
         .bundle_settings(bundle_settings)
         .package_settings(package_settings)
         .project_out_directory(installer_settings.out_path)
-        .verbose()
         .binaries(vec![bundle]);
 
     let settings = builder.build().unwrap();

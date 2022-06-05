@@ -2,3 +2,5 @@ target
 *.exe
 dist
 WixTools
+.gitignore
+app
