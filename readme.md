@@ -3,9 +3,9 @@
 You can now easily create installers for your Deno apps, thanks to the amazing
 work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) 💪
 
-Windows: MSI
-Linux: Debian package, AppImage
-Linux: DMG
+- Windows: `MSI`
+- Linux: `Debian package`, `AppImage`
+- Linux: `DMG`
 
 That beind said, feel free to contribute. If you have any feature idea see
 [Contributing](#Contributing) :)
