@@ -3,7 +3,9 @@
 You can now easily create installers for your Deno apps, thanks to the amazing
 work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) 💪
 
-IMPORTANT note: the code is still very **meh**
+Windows: MSI
+Linux: Debian package, AppImage
+Linux: DMG
 
 That beind said, feel free to contribute. If you have any feature idea see
 [Contributing](#Contributing) :)
@@ -42,7 +44,13 @@ const installer = new Installer({
   },
   bundle: {
     identifier: "my.deno.app",
-    icon: [], // It will look under /icons if empty
+    icon: [
+      "examples/oak/icons/32x32.png",
+      "examples/oak/icons/128x128.png",
+      "examples/oak/icons/128x128@2x.png",
+      "examples/oak/icons/icon.icns",
+      "examples/oak/icons/icon.ico",
+    ], // It will look under /icons if the array is empty
     resources: [], // Not tested
     copyright: "2022",
     short_description: "Short description!",
