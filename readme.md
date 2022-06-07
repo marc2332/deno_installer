@@ -5,7 +5,7 @@ work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) ðŸ
 
 - Windows: `MSI`
 - Linux: `Debian package`, `AppImage`
-- Linux: `DMG`
+- MacOS: `DMG`
 
 That beind said, feel free to contribute. If you have any feature idea see
 [Contributing](#Contributing) :)
