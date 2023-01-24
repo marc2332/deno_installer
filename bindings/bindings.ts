@@ -55,8 +55,9 @@ export type BundleSettingsInstaller = {
   long_description: string | undefined | null
 }
 export function create_installer(a0: InstallerSettings) {
-  const a0_buf = encode(JSON.stringify(a0))
-  let rawResult = _lib.symbols.create_installer(a0_buf, a0_buf.byteLength)
-  const result = rawResult
+  const a0_buf = encode(JSON.stringify(a0));
+  const a0_ptr = Deno.UnsafePointer.of(a0_buf);
+  let rawResult = _lib.symbols.create_installer(a0_ptr, a0_buf.byteLength);
+  const result = rawResult;
   return result
 }
