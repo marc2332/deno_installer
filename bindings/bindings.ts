@@ -8,7 +8,7 @@ function decode(v: Uint8Array): string {
   return new TextDecoder().decode(v)
 }
 function readPointer(v: any): Uint8Array {
-  const ptr = new Deno.UnsafePointerView(v as Deno.UnsafePointer)
+  const ptr = new Deno.UnsafePointerView(v)
   const lengthBe = new Uint8Array(4)
   const view = new DataView(lengthBe.buffer)
   ptr.copyInto(lengthBe, 0)
@@ -55,8 +55,9 @@ export type BundleSettingsInstaller = {
   long_description: string | undefined | null
 }
 export function create_installer(a0: InstallerSettings) {
-  const a0_buf = encode(JSON.stringify(a0))
-  let rawResult = _lib.symbols.create_installer(a0_buf, a0_buf.byteLength)
-  const result = rawResult
+  const a0_buf = encode(JSON.stringify(a0));
+  const a0_ptr = Deno.UnsafePointer.of(a0_buf);
+  let rawResult = _lib.symbols.create_installer(a0_ptr, a0_buf.byteLength);
+  const result = rawResult;
   return result
 }
