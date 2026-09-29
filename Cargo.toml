@@ -1,10 +1,10 @@
 [package]
-name = "deno_modern_installer"
+name = "deno_installer"
 version = "0.1.3"
 edition = "2021"
 
 [lib]
-name = "deno_modern_installer"
+name = "deno_installer"
 crate-type = ["cdylib"]
 
 [dependencies]

@@ -1,21 +1,4 @@
-# ✳️ Modern Deno Installer - Installation Package Creator
-
-![icon](https://i.postimg.cc/Hs2Qmxf8/icon-modern-repack.png)
-
-Easily create Deno installation package for any OS using single configuration script.
-
-Made in cooperation with original [deno_installer](https://github.com/marc2332/deno_installer) author.
-
-
----
-
-## 📦 Fork of [deno_installer](https://github.com/marc2332/deno_installer)
-Fork of original `deno_modern_installer` module, with fixes that makes it up-to-date with the latest Deno's releases.
-
-Latest release: https://github.com/ovsky/deno_modern_installer/releases/
-
-
-## ⚙️ Port of [tauri-bundler](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler)
+## 📦 Port of [tauri-bundler](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler)
 
 You can now easily create installers for your Deno apps, thanks to the amazing
 work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) 💪
@@ -27,7 +10,7 @@ work of [Tauri](https://github.com/tauri-apps/tauri/tree/dev/tooling/bundler) �
 That beind said, feel free to contribute. If you have any feature idea see
 [Contributing](#Contributing) :)
 
-## 📗 Demo:
+## Demo
 
 Before making the installer make sure you have your project as:
 
@@ -39,12 +22,12 @@ Before making the installer make sure you have your project as:
 |   +-- (See note for Linux)
 ``` 
 
-> Note: For **Linux** you will also need some special [icons](https://github.com/ovsky/deno_modern_installer/tree/main/examples/oak/icons).
+> Note: For **Linux** you will also need some special [icons](https://github.com/marc2332/deno_installer/tree/main/examples/oak/icons).
 
 Create a file `build.ts`, paste and modify as you wish:
 
 ```ts
-import { Installer } from "https://deno.land/x/modern_installer/mod.ts";
+import { Installer } from "https://deno.land/x/installer/mod.ts";
 
 const installer = new Installer({
   out_path: `${Deno.cwd()}/dist`,
@@ -55,7 +38,7 @@ const installer = new Installer({
     product_name: "MyApp",
     version: "1.0.0",
     description: "App made by a denosaur",
-    homepage: "https://github.com/ovsky/deno_modern_installer",
+    homepage: "https://github.com/marc2332/deno_installer",
     authors: ["Denosaur"],
     default_run: "MyApp",
   },
@@ -69,7 +52,7 @@ const installer = new Installer({
       "examples/oak/icons/icon.ico",
     ], // It will look under /icons if the array is empty
     resources: [], // Not tested
-    copyright: "2023",
+    copyright: "2022",
     short_description: "Short description!",
     long_description: "Looooooooooong description!",
   },
@@ -78,7 +61,7 @@ const installer = new Installer({
 await installer.createInstaller();
 ```
 
-🎁 Run:
+Run:
 
 ```shell
 deno run -A --unstable build.ts
@@ -86,7 +69,7 @@ deno run -A --unstable build.ts
 
 The installer path will be printed out.
 
-## 📝 Contributing:
+## Contributing
 
 Requisites:
 
